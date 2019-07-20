@@ -1,25 +1,24 @@
 #include <iostream>
+#include <math.h>
+using namespace std;
 
 int main(int argc, char** args) {
 	int n, count;
 	
-	while (scanf("%d", &n) != EOF) {
-		if (n == 1) count = 1;
-		else count = 2;
-		int t = n;
-		for (int i=2; i<=t; i++) {
-			while (t % i == 0) {
-				count++;
-				t = t / i; 
-				
-			}
-			
-			if (i == n) {
-				count--; 
+	while (cin >> n) {
+		count = 0;
+		int mid = sqrt(n);
+		for (int i = 1; i<=mid; i++) {
+			if (n % i == 0) {
+				if (i * i == n) {
+					count += 1;
+				} else {
+					count += 2;
+				}
 			}
 		}
 		
-		printf("%d\r\n", count);
+		cout << count << endl;
 	}
 	
 	return 0;
